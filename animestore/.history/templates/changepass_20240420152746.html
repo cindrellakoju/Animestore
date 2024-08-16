@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/changepass.css' %}">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
+  <title>changepass</title>
+</head>
+
+<body>
+  <header>
+    <div class="navbar">
+      <div class="meta-navbar">
+        <a href="https://boxicons.com/?query=fac" target="_blank"><i class='bx bxl-facebook'></i></a>
+        <a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+        <a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+        <a href="#" target="_blank"><i class='bx bxl-discord-alt'></i></a>
+        <a href="#" target="_blank"><i class='bx bxl-tiktok'></i></i></a>
+      </div>
+      <div class="product-navbar">
+        <h1>ANIMESTORE</h1>
+        <div class="search-bar">
+          <form action="/search/">
+            <input type="text" id="query" name="query" placeholder="search">
+            <button type="submit"><i class='bx bx-search-alt-2'></i></button>
+          </form>
+        </div>
+        <div class="menu">
+          <ul>
+            <a href="/">Home</a>
+            <a href="/store/">Product</a>
+            <!-- <a href="#"><i class='bx bx-heart'></i></a> -->
+            <a href="/cart/"><i class='bx bx-cart'></i></a>
+            <a href="myaccount/"><i class='bx bx-user-circle'></i></a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="left-bar">
+    <div class="icon">
+      <button><a href="{% url 'profile' %}"><i class='bx bx-user'><br><span>Profile</span></i></a></button>
+    </div>
+    <div class="icon">
+      <button><a href="{% url 'mycart' %}"><i class='bx bx-cart'><br><span>Cart</span></i></a></button>
+    </div>
+    <div class="icon">
+      <button><a href="{% url 'order' %}"><i class='bx bx-basket'><br><span>Orders</span></i></a></button>
+    </div>
+    <div class="icon">
+      <button><a href="/logout/"><i class='bx bx-log-out'><br><span>Logout</span></i></a></button>
+    </div>
+  </div>
+  <div class="right-bar">
+    <div class="rectangular-border">
+      <form id="password-form" method="POST" action="/changepass/">
+        {% csrf_token %}
+        <div class="changepassform">
+          <label for="old-password">Old Password:</label>
+          <div class="password-input-container">
+            <input type="password" spellcheck="false" id="id_old_password" name="old_password">
+            <i class='bx bx-hide toggle' id="oldpasswordtoggle"></i><br><br>
+          </div>
+        </div>
+        <div class="changepassform">
+          <label for="new-password">New Password:</label>
+          <div class="password-input-container">
+            <input type="password" spellcheck="false" id="id_new_password1" name="new_password1">
+            <i class='bx bx-hide toggle' id="newpasswordtoggle"></i><br><br>
+          </div>
+        </div>
+        <div class="changepassform">
+          <label for="confirm-password">Confirm Password:</label>
+          <div class="password-input-container">
+            <input type="password" spellcheck="false" id="id_new_password2" name="new_password2">
+            <i class='bx bx-hide toggle' id="confirmpasswordtoggle"></i><br><br>
+          </div>
+        </div>
+        <button type="submit" onclick="submitForm()">Submit</button>
+      </form>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          {% if message.tags == 'changepass_message' %}
+            <li>{{ message }}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const oldPasswordToggle = document.getElementById("oldpasswordtoggle");
+      const newPasswordToggle = document.getElementById("newpasswordtoggle");
+      const confirmPasswordToggle = document.getElementById("confirmpasswordtoggle");
+      const oldPasswordInput = document.getElementById("old-password");
+      const newPasswordInput = document.getElementById("new-password");
+      const confirmPasswordInput = document.getElementById("confirm-password");
+
+      oldPasswordToggle.addEventListener("click", () => {
+        togglePasswordVisibility(oldPasswordInput, oldPasswordToggle);
+      });
+
+      newPasswordToggle.addEventListener("click", () => {
+        togglePasswordVisibility(newPasswordInput, newPasswordToggle);
+      });
+
+      confirmPasswordToggle.addEventListener("click", () => {
+        togglePasswordVisibility(confirmPasswordInput, confirmPasswordToggle);
+      });
+
+      function togglePasswordVisibility(input, toggle) {
+        if (input.type === "password") {
+          input.type = "text";
+          toggle.classList.replace("bx-hide", "bx-show");
+        } else {
+          input.type = "password";
+          toggle.classList.replace("bx-show", "bx-hide");
+        }
+      }
+    });
+
+
+  </script>
+</body>
+
+</html>

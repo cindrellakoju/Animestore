@@ -1,0 +1,283 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>template</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+           <div class="meta-navbar">
+               <a href="https://boxicons.com/?query=fac" target="_blank"><i class='bx bxl-facebook'></i></a>
+               <a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+               <a href="#" target="_blank"><i class='bx bxl-twitter' ></i></a>
+               <a href="#" target="_blank"><i class='bx bxl-discord-alt'></i></a>
+               <a href="#" target="_blank"><i class='bx bxl-tiktok' ></i></i></a>
+           </div>
+           <div class="product-navbar">
+               <h1>ANIMESTORE</h1>
+               <div class="search-bar">
+                <form action="/search/">
+                    <input type="text" id="query" name="query" placeholder="search">
+                    <button type="submit"><i class='bx bx-search-alt-2'></i></button>
+                </form>
+               </div>
+               <div class="menu">
+                <ul>
+                    <a href="/">Home</a>
+                    <a href="/store/">Product</a>
+                    <!-- <a href="#"><i class='bx bx-heart'></i></a> -->
+                    <a href="/cart/"><i class='bx bx-cart' ></i></a>
+                    {% if user.is_authenticated %}
+                        <li><a href="/myaccount/"><i class='bx bx-user-circle'></i></a>
+                            <ul id="submenu">
+                                <div class="hover">
+                                    <div class="transparent">
+                                        <div class="bg-color"></div>
+                                        <div class="white"></div>
+                                    </div>
+                                    <div class="login">
+                                        <li><a href="/myaccount/">My Account</a></li><br>
+                                    </div>
+                                    <div class="signup">
+                                        <li><a href="/logout/">Logout</a></li>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+
+                        {% else %}
+                        <li><a href="/login/"><i class='bx bx-user-circle'></i></a>
+                            <ul id="submenu">
+                                <div class="hover">
+                                    <div class="transparent">
+                                        <div class="bg-color"></div>
+                                        <div class="white"></div>
+                                    </div>
+                                    <div class="login">
+                                        <li><a href="/login/">Login</a></li><br>
+                                    </div>
+                                    <div class="signup">
+                                        <li><a href="/signup/">SignUp</a></li>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                        {% endif %}
+                </ul>
+               </div>
+               
+           </div>
+       </div>
+    </header>
+    <div class="body-part">
+        <div class="div2">
+            <div class="side-bar">
+                <div class="images">
+                    <img src="{{ product.image1.url }}" alt="{{ product.title }}">
+                    {% if product.image2 != "" %}
+                        <img src="{{ product.image2.url }}" alt="{{ product.title }}">
+                    {% endif %}
+                    {% if product.image3 != "" %}
+                    <img src="{{ product.image3.url }}" alt="{{ product.title }}">
+                    {% endif %}
+                    {% if product.image4 != "" %}
+                    <img src="{{ product.image4.url }}" alt="{{ product.title }}">   
+                    {% endif %}
+                </div>
+            </div>
+            <div class="image-bar">
+                    <div class="arrows">
+                        <div class="left-arrow">
+                            <i class='bx bx-left-arrow' ></i>
+                        </div>
+                        <div class="right-arrow">
+                            <i class='bx bx-right-arrow' ></i>
+                        </div>
+                    </div>
+                    <div class="images">
+                        <img src="{{ product.image1.url }}" alt="{{ product.title }}">
+                    </div>
+                    
+            </div>
+            <div class="info-bar">
+                    <div class="heading-section">
+                        <h1>{{ product.title }}</h1>
+                    </div>
+                    <div class="price-section">
+                        <span class="price" value="10000">Rs.{{product.price}}</span>
+                    </div>
+                    <div class="description-section">
+                        <div class="heading">
+                            <h1>Description</h1>
+                        </div>
+                        <div class="paragraph">
+                            <p>{{ product.description }}</p>
+                        </div>
+                    </div>
+                    <div class="detail-section">
+                        <div class="heading">
+                            <h1 id="Detail">Details:</h1>
+                        </div>
+                        <div class="points">
+                        <p>{{product.detail}} </p>
+                        </div>
+                    </div>
+                    <div class="quantity-section">
+                        <div class="heading">
+                            <h4>Quantity:</h4>
+                        </div>
+                        <div class="inc-dcr">
+                            <button class="quantity-btn" onclick="decrement()">-</button>
+                            <input id="quantity" class="quantity-input" type="number" value="1" min="1">
+                            <button class="quantity-btn" onclick="increment()">+</button>
+                        </div>
+                        <div class="instock-section">
+                            <p>In stock:5 {{ product.available_quqntity }}</p>
+                        </div>
+                    </div>
+                    <!-- javascript code of incrrement decrement -->
+                    <script>
+                        function increment() {
+                          let quantityInput = document.getElementById("quantity");
+                          let currentValue = parseInt(quantityInput.value);
+                          let newValue = currentValue + 1;
+                          quantityInput.value = newValue;
+                        }
+                    
+                        function decrement() {
+                          let quantityInput = document.getElementById("quantity");
+                          let currentValue = parseInt(quantityInput.value);
+                          if (currentValue > 1) {
+                            let newValue = currentValue - 1;
+                            quantityInput.value = newValue;
+                          }
+                        }
+                      </script>
+                    <div class="button-section">
+                        <div class="cart">
+                             <i class='bx bxs-cart-add'></i>
+                             <form action="{% url 'add_to_cart' product_id=product.product_id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="add-to-cart" id="add">Add to cart</button>
+                            </form>
+                         </div>
+                         <div class="buy">
+                             <i class='bx bxs-basket'></i>
+                             <button class="buy" id="buy">Buy Now</button>
+                         </div> 
+                    </div>   
+            </div>   
+        </div>
+        <div class="div3">
+            <div class="heading">
+                <h1>Related Image</h1>
+            </div>
+             <div class="images">
+                {% for prod in products|slice:":4" %}
+                <div class="pic1">
+                    <img src="{{ prod.image1.url }}" alt="Nekopara">
+                    <a href="#">{{ prod.title }}</h4></a>
+                    <h3>Rs {{prod.price}}</h3>
+                    <form action="{% url 'add_to_cart' product_id=prod.product_id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="add-to-cart" id="add">Add to cart</button>
+                    </form>
+                </div>
+                {% endfor %}
+                <!-- <div class="pic2">
+                    <img src="related_object/Uta.jpg" alt="Uta">
+                    <a href="#"><h4>One piece film:red-uta portrait.of.pirates.figure</h4></a>
+                    <h3>Rs 10000</h3>
+                    <button>Add to cart</button>
+                </div>
+                <div class="pic3">
+                    <img src="related_object/frieren.jpg" alt="Frieren">
+                    <a href="#"><h4>Frieren:Beyond journey's end=frieren 1/7 scale figure</h4></a>
+                    <h3>Rs 9000</h3>
+                    <button>Add to cart</button>
+                </div>
+                <div class="pic4">
+                    <img src="related_object/luffy.jpg" alt="Frieren">
+                    <a href="#"><h4>one piece-monkey d.luffy grar 5s.h fugure</h4></a>
+                    <h3>Rs 8400</h3>
+                    <button>Add to cart</button> -->
+                <!-- </div> -->
+            </div>  
+        </div>
+    </div>
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.side-bar .images img');
+        const mainImage = document.querySelector('.image-bar .images img');
+
+        function showMainImage(index) {
+        // Remove active class from all images in side bar
+        images.forEach((image) => {
+            image.classList.remove('active');
+        });
+
+        // Update main image
+        mainImage.src = images[index].src;
+
+        // Add active class to corresponding image in side bar
+        images[index].classList.add('active');
+
+        currentIndex = index;
+        }
+
+        // Initial image display
+        showMainImage(currentIndex);
+
+        // Event listeners for arrows
+        document.querySelector('.left-arrow').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showMainImage(currentIndex);
+        });
+
+        document.querySelector('.right-arrow').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showMainImage(currentIndex);
+        });
+
+        document.querySelector('.top-arrow').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showMainImage(currentIndex);
+        });
+
+        document.querySelector('.bottom-arrow').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showMainImage(currentIndex);
+        });
+    </script>
+</body>
+<footer>
+    <div class="footer">
+        <div class="data">
+            <div class="info">
+                <a href="#">About Us</a><br>
+                <a href="#">Contact Us</a>
+                <h3>Contact No:9840347840</h3>
+                <h3>Email:animestore@gmail.com</h3>
+            </div>
+            <div class="connect-us">
+                <div class="icons">
+                    <a href="#" class="facebook" target="_blank"><i class='bx bxl-facebook-circle'></i></a>
+                    <a href="#" class="instagram" target="_blank"><i class='bx bxl-instagram' ></i></a>
+                    <a href="#" class="twitter" target="_blank"><i class='bx bxl-twitter' ></i></a>
+                    <a href="#" class="discord" target="_blank"><i class='bx bxl-discord-alt' ></i></a>
+                    <a href="#" class="email" target="_blank"><i class='bx bxs-envelope' ></i></a>
+                    <a href="#" class="tiktok" target="_blank"><i class='bx bxl-tiktok' ></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <h3>Copyright © 2024, Animestore</h3>
+        </div>    
+    </div>
+</footer>
+</html>

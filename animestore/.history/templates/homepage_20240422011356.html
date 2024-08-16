@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
+    <script src="{% static 'js/homepage.js' %}"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="meta-navbar">
+                <a href="https://boxicons.com/?query=fac" target="_blank"><i class='bx bxl-facebook'></i></a>
+                <a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+                <a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+                <a href="#" target="_blank"><i class='bx bxl-discord-alt'></i></a>
+                <a href="#" target="_blank"><i class='bx bxl-tiktok'></i></i></a>
+            </div>
+            <div class="product-navbar">
+                <h1>ANIMESTORE</h1>
+                <div class="search-bar">
+                    <form action="/search/">
+                        <input type="text" id="query" name="query" placeholder="search">
+                        <button type="submit"><i class='bx bx-search-alt-2'></i></button>
+                    </form>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <a href="#" class="home">Home</a>
+                        <a href="/store/" class="product">Product</a>
+                        <!-- <a href="#"><i class='bx bx-heart'></i></a> -->
+                        <a href="/cart/" class="cart"><i class='bx bx-cart'></i></a>
+                        {% if user.is_authenticated %}
+                        <li><a href="/myaccount/"><i class='bx bx-user-circle'></i></a>
+                            <ul id="submenu">
+                                <div class="hover">
+                                    <div class="transparent">
+                                        <div class="bg-color"></div>
+                                        <div class="white"></div>
+                                    </div>
+                                    <div class="login">
+                                        <li><a href="/myaccount/">My Account</a></li><br>
+                                    </div>
+                                    <div class="signup">
+                                        <li><a href="/logout/">Logout</a></li>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+
+                        {% else %}
+                        <li><a href="/login/"><i class='bx bx-user-circle'></i></a>
+                            <ul id="submenu">
+                                <div class="hover">
+                                    <div class="transparent">
+                                        <div class="bg-color"></div>
+                                        <div class="white"></div>
+                                    </div>
+                                    <div class="login">
+                                        <li><a href="/login/">Login</a></li><br>
+                                    </div>
+                                    <div class="signup">
+                                        <li><a href="/signup/">SignUp</a></li>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- carousel -->
+    <div class="carousel">
+        <!-- list item -->
+        <div class="list">
+            {% for rcate in cat %}
+            <div class="item">
+                <img src="{{ rcate.image.url }}">
+                <div class="content">
+                    <!-- <div class="author">LUNDEV</div>    -->
+                    <div class="title">Category</div>
+                    <div class="topic">{{ rcate.category.name}}</div>
+                    <div class="buttons">
+                        <a href="{% url 'category' category_name=rcate.category.name %}">
+                            <button type="button" id="{{ rcate.category.name }}" name="{{ rcate.category.name }}">SEE MORE</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- list thumnail -->
+        <div class="thumbnail">
+            {% for cate in cat %}
+            <div class="item">
+                <img src="{{ cate.image.url }}">
+                <div class="content">
+                    <div class="title">
+                        {{cate.category.name}}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <!-- next prev -->
+
+        <div class="arrows">
+            <button id="prev">
+                <</button>
+                    <button id="next">></button>
+        </div>
+        <!-- time running -->
+        <div class="time"></div>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="data">
+                <div class="info">
+                    <a>Contact Us</a>
+                    <h3>Contact No: 9840347840</h3>
+                    <h3>Email: animestore@gmail.com</h3>
+                </div>
+                <div class="connect-us">
+                    <div class="icons">
+                        <a href="#" class="facebook" target="_blank"><i class='bx bxl-facebook-circle'></i></a>
+                        <a href="#" class="instagram" target="_blank"><i class='bx bxl-instagram' ></i></a>
+                        <a href="#" class="twitter" target="_blank"><i class='bx bxl-twitter' ></i></a>
+                        <a href="#" class="discord" target="_blank"><i class='bx bxl-discord-alt' ></i></a>
+                        <a href="#" class="email" target="_blank"><i class='bx bxs-envelope' ></i></a>
+                        <a href="#" class="tiktok" target="_blank"><i class='bx bxl-tiktok' ></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <h3>Copyright © 2024, Animestore</h3>
+            </div>    
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Login Form</title>
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
+    </head>
+    <body>
+        <div class="wrapper">
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <h1>Login</h1>
+                <div class="input_box">
+                    <input type="text" id= "username" name="username" placeholder="Username" required>
+                    <!-- url bata leko -->
+                    <i class='bx bx-user'></i>
+                </div>
+                <div class="input_box">
+                    <input type="password" spellcheck="false" id= "password" name="password" placeholder="Password" required>
+                    <i class='bx bx-hide toggle' id="passwordToggle"></i>
+                </div>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        {% if message.tags == 'login_message' %}
+                            <li>{{ message }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                    <button type="submit" class="btn">Login</button>
+                    <div class="register_link">
+                        <p>Do have an account?<a href='/signup/'>Register</a></p>
+                    </div>
+            </form>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            const passwordToggle = document.getElementById("passwordToggle");
+             const passwordInput = document.getElementById("password");
+
+            passwordToggle.addEventListener("click", () => {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordToggle.classList.replace("bx-hide", "bx-show");
+            } else {
+                passwordInput.type = "password";
+                passwordToggle.classList.replace("bx-show", "bx-hide");
+            }
+            });
+            });
+        </script>
+    </body>
+</html>

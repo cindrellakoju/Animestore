@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My cart</title>
+    <link rel="stylesheet" href="cart.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+           <div class="meta-navbar">
+               <a href="https://boxicons.com/?query=fac" target="_blank"><i class='bx bxl-facebook'></i></a>
+               <a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+               <a href="#" target="_blank"><i class='bx bxl-twitter' ></i></a>
+               <a href="#" target="_blank"><i class='bx bxl-discord-alt'></i></a>
+               <a href="#" target="_blank"><i class='bx bxl-tiktok' ></i></i></a>
+           </div>
+           <div class="product-navbar">
+               <h1>ANIMESTORE</h1>
+               <div class="search-bar">
+                <form action="">
+                    <input type="text" id="search" name="search" placeholder="search">
+                    <button type="submit"><i class='bx bx-search-alt-2'></i></button>
+                </form>
+               </div>
+               <div class="menu">
+                <ul>
+                    <a href="#">Home</a>
+                    <a href="#">Product</a>
+                    <!-- <a href="#"><i class='bx bx-heart'></i></a> -->
+                    <a href="#"><i class='bx bx-cart' ></i></a>
+                    <a href="#"><i class='bx bx-user-circle'></i></a>
+                </ul>
+               </div>
+               
+           </div>
+       </div>
+    </header> 
+    <div class="body-part">
+        <div class="cart-container">
+            <h1>Your Cart</h1>
+            <div class="items">
+                <div class="tickbox">
+                    <input type="checkbox" id="product-1" onchange="toggleCheckoutButton()" >
+                </div>
+                <div class="image-section">
+                    <img src="Animestore _photo/posters/luffy.png">
+                </div>
+                <div class="info-section">
+                    <div class="heading-section">
+                        <label for="product-1">One Piece - Monkey D. Luffy Gear 5 S.H Figuarts Figure</label>            
+                    </div>
+                    <div class="quantity-section">
+                        <div class="heading">
+                            <h4>Quantity:</h4>
+                        </div>
+                        <div class="inc-dcr">
+                            <button class="quantity-btn" onclick="decrement('product-1')">-</button>
+                            <input id="quantity-product-1" class="quantity-input" type="number" value="1" min="1">
+                            <button class="quantity-btn" onclick="increment('product-1')">+</button>
+                        </div>
+                        <div class="instock-section">
+                            <p>In stock:55</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="price">
+                    <div class="info">
+                        <h4>Price:</h4>
+                        <span class="unit-price">Rs.10000</span>
+                    </div>
+                    <div class="button">
+                        <button class="delete-btn">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="items">
+                <div class="tickbox">
+                    <input type="checkbox" id="product-2" onchange="toggleCheckoutButton()" >
+                </div>
+                <div class="image-section">
+                    <img src="Animestore _photo/posters/luffy.png">
+                </div>
+                <div class="info-section">
+                    <div class="heading-section">
+                        <label for="product-2">One Piece - Monkey D. Luffy Gear 5 S.H Figuarts Figure</label>            
+                    </div>
+                    <div class="quantity-section">
+                        <div class="heading">
+                            <h4>Quantity:</h4>
+                        </div>
+                        <div class="inc-dcr">
+                            <button class="quantity-btn" onclick="decrement('product-2')">-</button>
+                            <input id="quantity-product-2" class="quantity-input" type="number" value="1" min="1">
+                            <button class="quantity-btn" onclick="increment('product-2')">+</button>
+                        </div>
+                        <div class="instock-section">
+                            <p>In stock:55</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="price">
+                    <div class="info">
+                        <h4>Price:</h4>
+                        <span class="unit-price">Rs.10000</span>
+                    </div>
+                    <div class="button">
+                        <button class="delete-btn">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="items">
+                <div class="tickbox">
+                    <input type="checkbox" id="product-3" onchange="toggleCheckoutButton()" >
+                </div>
+                <div class="image-section">
+                    <img src="Animestore _photo/posters/luffy.png">
+                </div>
+                <div class="info-section">
+                    <div class="heading-section">
+                        <label for="product-3">One Piece - Monkey D. Luffy Gear 5 S.H Figuarts Figure</label>            
+                    </div>
+                    <div class="quantity-section">
+                        <div class="heading">
+                            <h4>Quantity:</h4>
+                        </div>
+                        <div class="inc-dcr">
+                            <button class="quantity-btn" onclick="decrement('product-3')">-</button>
+                            <input id="quantity-product-3" class="quantity-input" type="number" value="1" min="1">
+                            <button class="quantity-btn" onclick="increment('product-3')">+</button>
+                        </div>
+                        <div class="instock-section">
+                            <p>In stock:55</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="price">
+                    <div class="info">
+                        <h4>Price:</h4>
+                        <span class="unit-price">Rs.10000</span>
+                    </div>
+                    <div class="button">
+                        <button class="delete-btn">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <h4 class="delivery-charge">Delivery Charge:<span>Rs. 200</span></h4>
+            <div class="cart-total" id="cart-total">
+                <h3>Total: <span class="unit-price">Rs. 00000</span></h3>
+            </div>
+            <div class="checkout" id="checkout-section" style="display: none;">
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+    function increment(productId) {
+    var input = document.getElementById('quantity-' + productId);
+    var value = parseInt(input.value, 10);
+    value = isNaN(value) ? 1 : value;
+    value++;
+    input.value = value;
+
+  toggleCheckoutButton(); // Update total price
+}
+
+// Function to decrement quantity
+function decrement(productId) {
+  var input = document.getElementById('quantity-' + productId);
+  var value = parseInt(input.value, 10);
+  value = isNaN(value) ? 1 : value;
+  value = value <= 1 ? 1 : value - 1;
+  input.value = value;
+
+  toggleCheckoutButton(); // Update total price
+}
+
+// Function to calculate total price and toggle checkout button
+function toggleCheckoutButton() {
+  var checkboxes = document.querySelectorAll('.tickbox input[type="checkbox"]');
+  var checkoutButton = document.getElementById('checkout-section');
+  var totalPrice = 0;
+
+  for (var i = 0; i < checkboxes.length; i++) {
+      var checkbox = checkboxes[i];
+      var quantityInput = document.getElementById('quantity-' + checkbox.id);
+      var unitPriceElement = checkbox.parentElement.parentElement.querySelector('.unit-price');
+      var unitPrice = parseFloat(unitPriceElement.textContent.replace('Rs.', ''));
+
+      if (checkbox.checked) {
+          var quantity = parseInt(quantityInput.value);
+          totalPrice += quantity * unitPrice;
+      }
+  }
+
+  // Add delivery charge
+  var deliveryCharge = 200;
+  totalPrice += deliveryCharge;
+
+  var cartTotalElement = document.getElementById('cart-total');
+  var totalSpanElement = cartTotalElement.querySelector('.unit-price');
+  totalSpanElement.textContent = 'Rs ' + totalPrice.toFixed(2); // Display total with 2 decimal places
+
+  if (totalPrice > 0) {
+      checkoutButton.style.display = 'block';
+  } else {
+      checkoutButton.style.display = 'none';
+  }
+}
+
+// Add event listeners to quantity inputs
+var quantityInputs = document.querySelectorAll('.quantity-input');
+quantityInputs.forEach(function(input) {
+  input.addEventListener('change', function() {
+      toggleCheckoutButton(); // Update total price
+  });
+});
+
+// Add event listeners to delete buttons
+var deleteButtons = document.querySelectorAll('.delete-btn');
+deleteButtons.forEach(function(button) {
+  button.addEventListener('click', function() {
+      var item = this.closest('.items');
+      var checkbox = item.querySelector('input[type="checkbox"]');
+      var quantityInput = item.querySelector('.quantity-input');
+
+      checkbox.checked = false;
+      quantityInput.value = 1;
+
+      item.remove(); // Remove the item from the DOM
+
+      toggleCheckoutButton(); // Update total price
+  });
+});
+    </script>
+</body>
+</html>

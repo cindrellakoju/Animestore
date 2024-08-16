@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .meta-navbar {
+    height: 20px;
+    background-color: black;
+    text-align: center;
+    font-size: 20px;
+    word-spacing: 20px;
+  }
+  
+  .meta-navbar i {
+    color: white;
+  }
+  
+  .meta-navbar i:hover {
+    color: rgb(78, 78, 255);
+  }
+  
+  .product-navbar {
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.432);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .product-navbar ul {
+    display: flex;
+  }
+  
+  .product-navbar h1 {
+    font-size: 20px;
+    font-family: cursive;
+    margin-left: 40px;
+    margin-right: 30px;
+    color: white;
+  }
+  
+  .product-navbar .search-bar input {
+    width: 300px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background: #f2f2f2;
+    border-radius: 30px;
+    color: gray;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .search-bar button {
+    height: 27px;
+    width: 27px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    margin-left: -33px;
+    margin-right: 50px;
+  }
+  
+  .menu {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+  }
+  
+  .menu ul {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    margin-left: -100px;
+    margin-right: 100px;
+    font-weight: bolder;
+  }
+  
+  .menu ul a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .menu ul a:hover {
+    color: purple;
+  }
+  
+  .menu ul a i {
+    font-size: 25px;
+  }
+  
+  /* Left sidebar */
+  .left-bar {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: calc(100vh - 100px);
+    width: 15%;
+    z-index: 1;
+  }
+  
+  .icon {
+    width: calc(100% - 45px);
+    height: calc((100vh - 100px) / 4 - 25px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #555555c2;
+    margin-bottom: 20px;
+    border-radius: 20px;
+  }
+  
+  .icon:first-child {
+    margin-top: 20px;
+  }
+  
+  .icon button {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    background-color: transparent;
+    border: none;
+  }
+  
+  button a i {
+    margin-top: -10px;
+    padding: 40px;
+    color: white;
+    font-size: 50px;
+  }
+  
+  button a i span {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 1px;
+    position: relative;
+    top: -20px;
+  }
+  
+  .icon button:hover {
+    background-color: rgb(124, 124, 241);
+    cursor: pointer;
+    color: black;
+  }
+  
+  button a i:hover {
+    color: black;
+  }
+  
+  .right-bar {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px);
+    width: 85%;
+    margin-left: 15%;
+    margin-top: 100px;
+  }
+  
+  .rectangular-border {
+    width: 95%;
+    height: 90%;
+    border: 2px solid #333;
+    background-color: #ffffff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    overflow: auto;
+  }
+  
+  .rectangular-border form {
+    margin-top: 60px;
+    width: 80%;
+    box-sizing: border-box;
+  }
+  
+  .rectangular-border label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  /* Style for password and text input states */
+  .rectangular-border input[type="password"],
+  .rectangular-border input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border: 2px solid black;
+    outline: none;
+  }
+  
+  /* Style for the button */
+.rectangular-border button {
+  background-color: rgb(83, 83, 246);
+  color: white;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 15px;
+  outline: none;
+  width: 100%;
+  height: 50px;
+}
+
+.rectangular-border button:hover {
+  background-color: rgba(0, 0, 254, 0.755);
+  text-decoration: underline;
+}
+  
+  /* Eye icon for password visibility toggle */
+  .password-input-container {
+    position: relative;
+  }
+  
+  .password-input-container i {
+    position: absolute;
+    top: 11px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+    z-index: 1;
+  }
+  
+  /* Prevent background color change on autofill */
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+  }
+  

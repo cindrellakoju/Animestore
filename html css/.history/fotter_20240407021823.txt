@@ -1,0 +1,25 @@
+<footer>
+        <div class="footer">
+            <div class="data">
+                <div class="info">
+                    <a href="#">About Us</a><br>
+                    <a href="#">Contact Us</a>
+                    <h3>Contact No: 9840347840</h3>
+                    <h3>Email: animestore@gmail.com</h3>
+                </div>
+                <div class="connect-us">
+                    <div class="icons">
+                        <a href="#" class="facebook" target="_blank"><i class='bx bxl-facebook-circle'></i></a>
+                        <a href="#" class="instagram" target="_blank"><i class='bx bxl-instagram' ></i></a>
+                        <a href="#" class="twitter" target="_blank"><i class='bx bxl-twitter' ></i></a>
+                        <a href="#" class="discord" target="_blank"><i class='bx bxl-discord-alt' ></i></a>
+                        <a href="#" class="email" target="_blank"><i class='bx bxs-envelope' ></i></a>
+                        <a href="#" class="tiktok" target="_blank"><i class='bx bxl-tiktok' ></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <h3>Copyright © 2024, Animestore</h3>
+            </div>    
+        </div>
+    </footer>
