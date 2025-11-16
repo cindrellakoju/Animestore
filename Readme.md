@@ -36,6 +36,8 @@
 
 **AnimeStore** is a comprehensive e-commerce web application built with Django, designed specifically for anime merchandise enthusiasts. This platform provides a seamless shopping experience with features like user authentication, product categorization, shopping cart management, order processing, and user profile management.
 
+> **📌 Note:** This project is **backend-focused**, showcasing Django's powerful backend capabilities including custom user models, complex database relationships, authentication systems, and business logic implementation. The frontend uses Django templates with basic CSS/JavaScript for demonstration purposes.
+
 ### 🎯 Key Highlights
 
 - 🔐 **Custom User Authentication** with extended profile fields
@@ -89,17 +91,21 @@
 
 ## 🛠️ Tech Stack
 
-### Backend
+### Backend ⭐ **(Primary Focus)**
 - **Framework:** Django 4.2
 - **Database:** MySQL
 - **ORM:** Django ORM
 - **Authentication:** Django Auth System (Custom User Model)
+- **Environment Management:** python-dotenv
+- **Image Handling:** Pillow
 
-### Frontend
+### Frontend *(Basic Implementation)*
 - **Templates:** Django Template Engine
 - **Styling:** CSS3
 - **Scripting:** JavaScript (Vanilla)
 - **Icons & Images:** Custom assets
+
+> **💡 Development Focus:** This project emphasizes **backend architecture, database design, business logic, and Django best practices**. The frontend is functional but intentionally kept simple to highlight server-side capabilities.
 
 ### Dependencies
 ```
@@ -108,6 +114,7 @@ Django==4.2
 mysqlclient==2.2.7
 pillow==12.0.0
 psycopg2-binary==2.9.11
+python-dotenv==1.2.1
 sqlparse==0.5.3
 tzdata==2025.2
 ```
@@ -146,44 +153,69 @@ source animestore_env/bin/activate
 pip install -r requirements.txt
 ```
 
-#### 4️⃣ Configure Database
+#### 4️⃣ Configure Environment Variables
+Create a `.env` file in the root directory (copy from `.env.example`):
+```bash
+# Windows
+copy .env.example .env
+
+# Linux/Mac
+cp .env.example .env
+```
+
+Update the `.env` file with your configuration:
+```env
+# Django Settings
+SECRET_KEY=your-secret-key-here
+DEBUG=True
+
+# Allowed Hosts (comma-separated)
+ALLOWED_HOSTS=127.0.0.1,localhost
+
+# Database Configuration
+DB_ENGINE=django.db.backends.mysql
+DB_NAME=animestore
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_HOST=localhost
+DB_PORT=3306
+
+# Static Files
+STATIC_URL=/static/
+STATIC_ROOT=staticfiles
+
+# Media Files
+MEDIA_URL=/templates/media/
+MEDIA_ROOT=templates/media
+
+# Authentication
+LOGIN_URL=/login/
+```
+
+#### 5️⃣ Configure Database
 Create a MySQL database named `animestore`:
 ```sql
 CREATE DATABASE animestore;
 ```
 
-Update database credentials in `animestore/settings.py`:
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'animestore',
-        'USER': 'your_mysql_username',
-        'PASSWORD': 'your_mysql_password',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
-```
-
-#### 5️⃣ Run Migrations
+#### 6️⃣ Run Migrations
 ```bash
 cd animestore
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-#### 6️⃣ Create Superuser
+#### 7️⃣ Create Superuser
 ```bash
 python manage.py createsuperuser
 ```
 
-#### 7️⃣ Collect Static Files
+#### 8️⃣ Collect Static Files
 ```bash
 python manage.py collectstatic
 ```
 
-#### 8️⃣ Run Development Server
+#### 9️⃣ Run Development Server
 ```bash
 python manage.py runserver
 ```
@@ -459,16 +491,46 @@ User account management:
 ## 🔧 Configuration
 
 ### Environment Variables
-Consider adding a `.env` file for sensitive information:
-```python
-SECRET_KEY=your-secret-key-here
-DEBUG=True
-DATABASE_NAME=animestore
-DATABASE_USER=your-username
-DATABASE_PASSWORD=your-password
-DATABASE_HOST=localhost
-DATABASE_PORT=3306
+The project uses environment variables for secure configuration management. All sensitive data is stored in the `.env` file (not tracked in git).
+
+**Available Environment Variables:**
+```env
+# Django Settings
+SECRET_KEY=your-secret-key-here           # Django secret key for security
+DEBUG=True                                 # Debug mode (False in production)
+
+# Allowed Hosts (comma-separated)
+ALLOWED_HOSTS=127.0.0.1,localhost         # Allowed host addresses
+
+# Database Configuration
+DB_ENGINE=django.db.backends.mysql        # Database engine
+DB_NAME=animestore                        # Database name
+DB_USER=root                              # Database username
+DB_PASSWORD=your_mysql_password           # Database password
+DB_HOST=localhost                         # Database host
+DB_PORT=3306                              # Database port
+
+# Static Files
+STATIC_URL=/static/                       # Static files URL
+STATIC_ROOT=staticfiles                   # Static files root directory
+
+# Media Files
+MEDIA_URL=/templates/media/               # Media files URL
+MEDIA_ROOT=templates/media                # Media files root directory
+
+# Authentication
+LOGIN_URL=/login/                         # Login page URL
+
+# CSRF Trusted Origins (comma-separated URLs)
+CSRF_TRUSTED_ORIGINS=http://127.0.0.1:8000,http://localhost:8000
 ```
+
+**⚠️ Important Security Notes:**
+- Never commit `.env` file to version control
+- Use `.env.example` as a template
+- Generate a strong SECRET_KEY for production
+- Set DEBUG=False in production
+- Configure proper ALLOWED_HOSTS for production
 
 ### Media Files
 Uploaded images are stored in:
@@ -497,13 +559,6 @@ Access the Django admin panel at `http://127.0.0.1:8000/admin/`
 5. **Checkout** and place order
 6. **Track** orders in order history
 
-### Testing
-Run the test suite:
-```bash
-python manage.py test anime
-```
-
----
 
 ## 🌈 Features Showcase
 
@@ -550,28 +605,3 @@ This project is developed as a personal portfolio project. Feel free to use it f
 
 **Cindrella Koju**
 - GitHub: [@cindrellakoju](https://github.com/cindrellakoju)
-
----
-
-## 🎯 Future Enhancements
-
-- [ ] Payment gateway integration
-- [ ] Email notifications
-- [ ] Product reviews and ratings
-- [ ] Wishlist functionality
-- [ ] Advanced filtering (price range, popularity)
-- [ ] Admin order management dashboard
-- [ ] Inventory alerts
-- [ ] Multi-language support
-- [ ] REST API for mobile app
-- [ ] Social media authentication
-
----
-
-<div align="center">
-
-### 🌟 If you like this project, please give it a star! ⭐
-
-**Built with ❤️ using Django**
-
-</div>

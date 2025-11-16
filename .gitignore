@@ -1,5 +1,42 @@
+# Environment variables
+.env
+
+# Virtual environments
 env/
 animestore_env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Database dumps
 ./animestore.sql
+*.sql
+*.sqlite
+*.sqlite3
+
+# Python
 __pycache__/
 *.py[cod]
+*$py.class
+*.so
+.Python
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+/staticfiles/
+/media/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
