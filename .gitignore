@@ -1,0 +1,5 @@
+env/
+animestore_env/
+./animestore.sql
+__pycache__/
+*.py[cod]
